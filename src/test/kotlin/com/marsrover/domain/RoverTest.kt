@@ -31,4 +31,21 @@ internal class RoverTest {
         val expectedRover = Rover(Point(0, 1), direction)
         assertThat(rover).isEqualTo(expectedRover)
     }
+
+    @Test
+    internal fun `should move rover forward direction south`() {
+        val x = 0
+        val y = 0
+        val direction = Direction.S
+        val commands = listOf("f")
+
+        val rover = Rover(Point(x, y), direction)
+
+        rover.executeCommands(commands)
+
+        val expectedRover = Rover(Point(0, -1), direction)
+        assertThat(rover).isEqualTo(expectedRover)
+    }
+
+
 }

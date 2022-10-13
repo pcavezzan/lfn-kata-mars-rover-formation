@@ -5,6 +5,7 @@ data class Rover(var point: Point, val direction: Direction) {
     fun executeCommands(commands: List<String>) {
         when (commands[0]) {
             "f" -> if (Direction.N == direction ) point = Point(point.x, point.y + 1)
+                    else point = Point(point.x, point.y - 1)
         }
     }
 }
