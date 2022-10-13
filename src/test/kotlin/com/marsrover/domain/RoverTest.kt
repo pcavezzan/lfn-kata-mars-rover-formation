@@ -20,7 +20,7 @@ internal class RoverTest {
     }
 
     @ParameterizedTest
-    @CsvSource("N,0,1", "S,0,-1")
+    @CsvSource("N,0,1", "S,0,-1", "E,1,0", "W,-1,0")
     internal fun `should move rover forward to given direction`(givenDirection: String, expectedX: Int, expectedY: Int) {
         val x = 0
         val y = 0
