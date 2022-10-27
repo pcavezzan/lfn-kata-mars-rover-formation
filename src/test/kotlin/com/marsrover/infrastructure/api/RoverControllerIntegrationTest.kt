@@ -1,14 +1,13 @@
 package com.marsrover.infrastructure.api
 
+import com.ninjasquad.springmockk.MockkBean
+import io.mockk.every
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.MockMvcBuilder
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
@@ -20,7 +19,7 @@ internal class RoverControllerIntegrationTest {
     @Autowired
     private lateinit var webContext: WebApplicationContext
 
-    @MockBean
+    @MockkBean
     private lateinit var roverAdapter: RoverAdapter
 
     private lateinit var mockMvc: MockMvc
@@ -32,7 +31,7 @@ internal class RoverControllerIntegrationTest {
 
     @Test
     internal fun `should post command to rover`() {
-        Mockito.`when`(roverAdapter.moveRover(arrayOf("f"))).thenReturn(RoverPositionResponse(0, 1, "E"))
+        every { roverAdapter.moveRover(arrayOf("f")) } returns RoverPositionResponse(0, 1, "E")
         mockMvc.perform(
             MockMvcRequestBuilders.post("/commands")
                 .contentType(MediaType.APPLICATION_JSON).content(
