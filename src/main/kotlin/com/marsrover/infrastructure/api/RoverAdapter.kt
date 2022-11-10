@@ -1,7 +1,9 @@
 package com.marsrover.infrastructure.api
 
-class RoverAdapter {
-    fun moveRover(commands: Array<String>): RoverPositionResponse {
-        TODO("Not yet implemented")
+import com.marsrover.domain.application.MoveRoverForward
+
+class RoverAdapter(val moveRoverForward: MoveRoverForward) {
+    fun moveRoverForward(command: Array<String>): RoverPositionResponse {
+        return RoverPositionResponse.from(moveRoverForward.execute())
     }
 }

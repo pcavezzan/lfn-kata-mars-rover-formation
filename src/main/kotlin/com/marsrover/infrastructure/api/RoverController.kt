@@ -10,7 +10,7 @@ class RoverController(val adapter: RoverAdapter) {
 
     @PostMapping("/commands")
     fun moveRover(@RequestBody commands: Array<String>): ResponseEntity<RoverPositionResponse> {
-        return ResponseEntity.ok(adapter.moveRover(commands))
+        return ResponseEntity.ok(adapter.moveRoverForward(commands))
     }
 
     /*
