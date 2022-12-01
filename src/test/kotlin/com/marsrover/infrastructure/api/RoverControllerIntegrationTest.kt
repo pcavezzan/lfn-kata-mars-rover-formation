@@ -23,7 +23,7 @@ internal class RoverControllerIntegrationTest {
 
     @Test
     internal fun `should post command to rover `() {
-        every { roverAdapter.moveRoverForward(arrayOf("f")) } returns RoverPositionResponse(0, 1, "E")
+        every { roverAdapter.moveRoverForward(listOf("f")) } returns RoverPositionResponse(0, 1, "E")
         mockMvc.perform(
             MockMvcRequestBuilders.post("/commands")
                 .contentType(MediaType.APPLICATION_JSON).content(

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class RoverController(val adapter: RoverAdapter) {
 
     @PostMapping("/commands")
-    fun moveRover(@RequestBody commands: Array<String>): ResponseEntity<RoverPositionResponse> {
+    fun moveRover(@RequestBody commands: List<String>): ResponseEntity<RoverPositionResponse> {
         return ResponseEntity.ok(adapter.moveRoverForward(commands))
     }
 

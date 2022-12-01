@@ -1,5 +1,6 @@
 package com.marsrover.infrastructure.api
 
+import com.marsrover.domain.Command
 import com.marsrover.domain.Direction
 import com.marsrover.domain.Point
 import com.marsrover.domain.Position
@@ -22,13 +23,13 @@ internal class RoverAdapterTest {
 
     @Test
     fun `should send command to move rover forward`() {
-        every { moveRoverForward.execute(arrayOf("F")) } returns Position(Point(0,0), Direction.N)
+        every { moveRoverForward.execute(listOf(Command.FORWARD)) } returns Position(Point(0,0), Direction.N)
         //GIVEN
 
         //WHEN
-        adapter.moveRoverForward(emptyArray())
+        adapter.moveRoverForward(listOf("F"))
 
         //THEN
-        verify { moveRoverForward.execute(arrayOf("F")) }
+        verify { moveRoverForward.execute(listOf(Command.FORWARD)) }
     }
 }
