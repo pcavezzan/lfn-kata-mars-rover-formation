@@ -14,7 +14,7 @@
     <name>mars-rover-back</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <kotlin.version>1.6.21</kotlin.version>
         <mockk.version>1.13.2</mockk.version>
         <springmockk.version>3.1.1</springmockk.version>
