@@ -1,10 +1,8 @@
 package com.marsrover.domain
 
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import org.junit.jupiter.params.provider.ValueSource
 
 class CommandTest {
 
@@ -16,5 +14,8 @@ class CommandTest {
         stringCommand: String,
         domainCommand: Command
     ) {
+        val command = Command.parse(stringCommand)
+
+        assertThat(command).isEqualTo(domainCommand)
     }
 }
