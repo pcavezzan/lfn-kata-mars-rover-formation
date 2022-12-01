@@ -1,6 +1,6 @@
 package com.marsrover.config
 
-import com.marsrover.domain.application.MoveRoverForward
+import com.marsrover.domain.application.MoveRover
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -8,5 +8,5 @@ import org.springframework.context.annotation.Configuration
 class CommandConfiguration {
 
     @Bean
-    fun moveRoverForward() = MoveRoverForward()
+    fun moveRoverForward() = MoveRover()
 }

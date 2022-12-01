@@ -4,7 +4,7 @@ import com.marsrover.domain.Command
 import com.marsrover.domain.Direction
 import com.marsrover.domain.Point
 import com.marsrover.domain.Position
-import com.marsrover.domain.application.MoveRoverForward
+import com.marsrover.domain.application.MoveRover
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
@@ -17,19 +17,19 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class RoverAdapterTest {
 
     @RelaxedMockK
-    private lateinit var moveRoverForward: MoveRoverForward
+    private lateinit var moveRover: MoveRover
     @InjectMockKs
     private lateinit var adapter: RoverAdapter
 
     @Test
     fun `should send command to move rover forward`() {
-        every { moveRoverForward.execute(listOf(Command.FORWARD)) } returns Position(Point(0,0), Direction.N)
+        every { moveRover.execute(listOf(Command.FORWARD)) } returns Position(Point(0,0), Direction.N)
         //GIVEN
 
         //WHEN
         adapter.moveRoverForward(listOf("F"))
 
         //THEN
-        verify { moveRoverForward.execute(listOf(Command.FORWARD)) }
+        verify { moveRover.execute(listOf(Command.FORWARD)) }
     }
 }
