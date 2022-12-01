@@ -6,7 +6,6 @@ import com.marsrover.domain.Position
 import com.marsrover.domain.application.MoveRoverForward
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
-import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.verify
@@ -23,13 +22,13 @@ internal class RoverAdapterTest {
 
     @Test
     fun `should send command to move rover forward`() {
-        every { moveRoverForward.execute() } returns Position(Point(0,0), Direction.N)
+        every { moveRoverForward.execute(arrayOf("F")) } returns Position(Point(0,0), Direction.N)
         //GIVEN
 
         //WHEN
         adapter.moveRoverForward(emptyArray())
 
         //THEN
-        verify { moveRoverForward.execute() }
+        verify { moveRoverForward.execute(arrayOf("F")) }
     }
 }
